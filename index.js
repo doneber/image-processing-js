@@ -1,8 +1,8 @@
 let img = new Image();
 img.src = 'pikachu.jpg';
 
-img.style.width = 600;
-img.style.height = 600;
+img.style.width = 500;
+img.style.height = 500;
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
@@ -10,11 +10,14 @@ let ctx = canvas.getContext('2d');
 
 
 img.onload = function () {
-  ctx.drawImage(img, 0, 0, 600, 600);
+  ctx.drawImage(img, 0, 0, 500, 500);
   img.style.display = 'none';
 };
-let miCanvas = document.getElementById('miCanvas');
-let miCtx = miCanvas.getContext('2d');
+
+var loadFile = function(event) {
+	img.src = URL.createObjectURL(event.target.files[0]);
+	ctx.drawImage(img, 0, 0, 500, 500);
+};
 var kernel = [
   -1, -1, -1,
   -1, 8, -1,
@@ -24,6 +27,8 @@ function multiplicacion(k, m) {
   return k[0] * m[0] + k[1] * m[1] + k[2] * m[2] + k[3] * m[3] + k[4] * m[4] + k[5] * m[5] + k[5] * m[5] + k[6] * m[6] + k[7] * m[7] + k[8] * m[8];
 }
 function clickMe() {
+  let miCanvas = document.getElementById('miCanvas');
+  let miCtx = miCanvas.getContext('2d');
   const ancho =500
   const alto =500
 
