@@ -1,4 +1,5 @@
 let img = new Image();
+img.setAttribute('crossOrigin', '');
 img.src = 'pikachu.jpg';
 
 let canvas = document.getElementById('canvas');
